@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ذكرياتنا 💎</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Great+Vibes&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0a0a 0%, #3d0d0d 25%, #6b1515 50%, #8b1a1a 75%, #a52222 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .snow-container {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -50px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(calc(100vh + 50px)) rotate(360deg); }
+        }
+
+        .lights-container {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .light {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .light:nth-child(1) { background: #ff4444; box-shadow: 0 0 20px #ff4444; }
+        .light:nth-child(2) { background: #ff6b6b; box-shadow: 0 0 20px #ff6b6b; animation-delay: 0.3s; }
+        .light:nth-child(3) { background: #ffb3b3; box-shadow: 0 0 20px #ffb3b3; animation-delay: 0.6s; }
+        .light:nth-child(4) { background: #ff8888; box-shadow: 0 0 20px #ff8888; animation-delay: 0.9s; }
+        .light:nth-child(5) { background: #ff5555; box-shadow: 0 0 20px #ff5555; animation-delay: 1.2s; }
+
+        @keyframes glow {
+            0% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .hearts-background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 100, 100, 0.4);
+            transform: rotate(45deg);
+            animation: floatHeart linear infinite;
+        }
+
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 100, 100, 0.4);
+            border-radius: 50%;
+        }
+
+        .heart::before { top: -15px; left: 0; }
+        .heart::after { left: 15px; top: 0; }
+
+        .heart:nth-child(1) { left: 10%; animation-duration: 12s; }
+        .heart:nth-child(2) { left: 30%; animation-duration: 15s; animation-delay: 2s; }
+        .heart:nth-child(3) { left: 50%; animation-duration: 18s; animation-delay: 4s; }
+        .heart:nth-child(4) { left: 70%; animation-duration: 14s; animation-delay: 6s; }
+        .heart:nth-child(5) { left: 85%; animation-duration: 16s; animation-delay: 1s; }
+
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) rotate(45deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-50px) rotate(45deg); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 5;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .year-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(200, 0, 0, 0.4);
+            animation: pulse2 2s infinite;
+            font-family: 'Pacifico', cursive;
+        }
+
+        @keyframes pulse2 {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .christmas-emoji {
+            font-size: 5em;
+            margin-bottom: 25px;
+            animation: rotate3d 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate3d {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-10deg) scale(1.1); }
+            75% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        .page-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #ff6b6b, #ffb3b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .memory-video {
+            width: 100%;
+            max-width: 700px;
+            height: 400px;
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(200, 0, 0, 0.6);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .memory-video iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .video-caption {
+            color: #ffb3b3;
+            font-size: 1.4em;
+            margin-bottom: 50px;
+            font-weight: 600;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0 15px 40px rgba(200, 0, 0, 0.5);
+            border: 3px solid rgba(255, 100, 100, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(200, 0, 0, 0.7);
+        }
+
+        .memory-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover .memory-image img {
+            transform: scale(1.05);
+        }
+
+        .memory-image1 video {
+            width: 100%;
+            height:auto;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover .memory-image1 video {
+            transform: scale(1.02);
+        }
+
+        .memory-caption {
+            font-size: 1.2em;
+            color: #8b1a1a;
+            font-weight: bold;
+        }
+
+        .time-together-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(200, 0, 0, 0.5);
+            border: 3px solid rgba(255, 100, 100, 0.3);
+        }
+
+        .time-together-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        #timeTogether {
+            font-size: 1.3em;
+            color: #8b1a1a;
+            font-weight: bold;
+        }
+
+        .final-cta {
+            margin-top: 50px;
+               text-align: center;
+        }
+
+        .cta-text {
+            font-size: 1.8em;
+            background: linear-gradient(135deg, #ff6b6b, #ffb3b3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            margin-bottom: 25px;
+            font-family: 'Great Vibes', cursive;
+        }
+
+        .next-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #ff4444, #cc0000);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.4em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(200, 0, 0, 0.6);
+            transition: all 0.4s ease;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .emoji-row {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2.5em;
+        }
+
+        .emoji-row span {
+            animation: bounce2 2s ease-in-out infinite;
+        }
+
+        .emoji-row span:nth-child(1) { animation-delay: 0s; }
+        .emoji-row span:nth-child(2) { animation-delay: 0.2s; }
+        .emoji-row span:nth-child(3) { animation-delay: 0.4s; }
+        .emoji-row span:nth-child(4) { animation-delay: 0.6s; }
+        .emoji-row span:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes bounce2 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @media (max-width: 768px) {
+            .page-title { font-size: 2.5em; }
+            .memory-video { height: 250px; }
+            .memory-image1 video { height: 400px; }
+            .memory-image img { height: 180px; }
+            #timeTogether { font-size: 1.1em; }
+            .time-together-title { font-size: 2em; }
+            .cta-text { font-size: 1.5em; }
+            .next-btn { font-size: 1.2em; padding: 18px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="starsContainer"></div>
+
+    <div class="lights-container">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <div class="snow-container" id="snowContainer"></div>
+
+    <div class="hearts-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <div class="container">
+        <div class="year-tag">✨ Christmas 2026 ✨</div>
+        
+        <div class="christmas-emoji">🎄</div>
+        
+        <h1 class="page-title">Our Beautiful Memories</h1>
+
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" 
+        src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v18.0"></script>
+
+<!-- Facebook Video -->
+<div class="memory-video">
+  <div class="fb-video" 
+       data-href="https://www.facebook.com/facebook/videos/876327358162607/" 
+       data-width="700" 
+       data-show-text="false">
+  </div>
+</div>
+          <div class="timeline">
+  
+              <div class="memory-card">
+        <div class="memory-image1">
+            <video id="memoryVideo" controls>
+                <source src="video4.mp4" type="video/mp4">
+                المتصفح لا يدعم تشغيل الفيديو
+            </video>
+        </div>
+    </div>
+         <div class="memory-card">
+        <div class="memory-image1">
+            <video id="memoryVideo" controls>
+                <source src="2.mp4" type="video/mp4">
+                المتصفح لا يدعم تشغيل الفيديو
+            </video>
+        </div>
+        </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photo1.jpg" alt="ذكرى 1">
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photo2.jpg" alt="ذكرى 2">
+                </div>
+            </div>
+             <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photo3.jpg" alt="ذكرى 3">
+                </div>
+            </div>
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photo4.jpg" alt="ذكرى 4">
+                </div>
+            </div>
+
+            <div class="memory-card">
+                <div class="memory-image">
+                    <img src="photo5.jpg" alt="ذكرى 5">
+                </div>
+            </div>
+        </div>
+
+      <div class="final-cta">
+            <p class="cta-text">✨ في حاجة مهمة عايز أقولهالك ✨</p>
+            <a href="message.html" class="next-btn">❤️ دوس هنا ❤️</a>
+        </div>
+    </div>
+            
+            <div class="emoji-row">
+                <span>🎄</span>
+                <span>💎</span>
+                <span>🎅</span>
+                <span>💕</span>
+                <span>⛄</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Stars
+        const starsContainer = document.getElementById('starsContainer');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Snowflakes
+        const snowContainer = document.getElementById('snowContainer');
+        const snowflakes = ['❄️', '❅', '❆'];
+        for (let i = 0; i < 50; i++) {
+            const snow = document.createElement('div');
+            snow.className = 'snowflake';
+            snow.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            snow.style.animationDelay = Math.random() * 5 + 's';
+            snowContainer.appendChild(snow);
+        }
+
+        // YouTube API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.body.appendChild(tag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('bgMusic');
+        }
+    </script>
+</body>
+</html>

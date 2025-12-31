@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة الي هجوره 💌</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Great+Vibes&family=Dancing+Script&family=Scheherazade+New&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Scheherazade New', serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0505 0%, #330a0a 25%, #5c1515 50%, #8b1a1a 75%, #b22222 100%);
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .snow-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -50px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.5em;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        .lights-container {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .light {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        .light:nth-child(1) { background: #ff0000; box-shadow: 0 0 20px #ff0000; }
+        .light:nth-child(2) { background: #228b22; box-shadow: 0 0 20px #228b22; animation-delay: 0.3s; }
+        .light:nth-child(3) { background: #ffd700; box-shadow: 0 0 20px #ffd700; animation-delay: 0.6s; }
+        .light:nth-child(4) { background: #ff0000; box-shadow: 0 0 20px #ff0000; animation-delay: 0.9s; }
+        .light:nth-child(5) { background: #228b22; box-shadow: 0 0 20px #228b22; animation-delay: 1.2s; }
+
+        @keyframes glow {
+            0% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .music-notes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .note {
+            position: absolute;
+            font-size: 2em;
+            animation: floatNote 8s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatNote {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg);
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) rotate(360deg);
+            }
+        }
+
+        /* Hearts Background Animation */
+        .hearts-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(220, 20, 60, 0.4);
+            transform: rotate(45deg);
+            animation: float 12s infinite ease-in-out;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(220, 20, 60, 0.4);
+            border-radius: 50%;
+        }
+
+        .heart::before { top: -15px; left: 0; }
+        .heart::after { left: 15px; top: 0; }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .heart:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .heart:nth-child(5) { left: 85%; animation-delay: 1s; }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(120vh) rotate(45deg); opacity: 0; }
+        }
+
+        .welcome-box {
+            position: relative;
+            z-index: 5;
+            background: rgba(255, 250, 245, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 60px 50px;
+            border-radius: 40px;
+            box-shadow: 0 30px 80px rgba(139, 26, 26, 0.5);
+            max-width: 700px;
+            width: 100%;
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            animation: slideIn 0.8s ease-out;
+            text-align: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .fancy-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em;
+            background: linear-gradient(135deg, #dc143c, #8b0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            text-shadow: none;
+        }
+
+        .romantic-text {
+            font-size: 1.5em;
+            line-height: 2.2;
+            color: #8b1a1a;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: #dc143c;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .start-btn {
+            display: inline-block;
+            padding: 20px 50px;
+            background: linear-gradient(135deg, #dc143c, #8b0000);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.5em;
+            font-family: 'Pacifico', cursive;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(139, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(139, 0, 0, 0.7);
+        }
+
+        .start-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .emoji-decoration {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: rotate3d 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate3d {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-10deg) scale(1.1); }
+            75% { transform: rotate(10deg) scale(1.1); }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 30px 15px; }
+            .welcome-box { padding: 40px 30px; }
+            .fancy-title { font-size: 2.5em; }
+            .romantic-text { font-size: 1.2em; }
+            .start-btn { font-size: 1.2em; padding: 18px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="starsContainer"></div>
+
+    <div class="lights-container">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <div class="snow-container" id="snowContainer"></div>
+    
+    <div class="music-notes" id="musicNotes"></div>
+
+    <div class="hearts-background">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+
+    <div class="welcome-box">
+        <div class="emoji-decoration">💌</div>
+        
+        <h1 class="fancy-title">هجورتي 🤍 </h1>
+        
+        <p class="romantic-text">
+احلى حد هدخل معاه السنه الجديده ربنا يخليكي ليا<br>
+يارب السنه الجديده تحققلك كل احلامك وتوصلك لكل اللي نفسك فيه وتبقي مبسوطه دايمًا<br>
+عارفه اول يوم عرفتك كان صدفه حلوه اوي ولو الزمن رجع بيا تاني هختارك من غير تفكير لانك احسن حاجه حصلتلي<br>
+يا هاجر يا اجمل اسم واطيب قلب في الدنيا<br>
+حبيت اعملك الموقع ده عشان يفكرك دايمًا قد ايه انتي غاليه عندي<br>
+يارب تكون سنه حلوه وهتبقا حلوه اصلًا لانك موجوده فيها وانا داخل السنه وانا معايا اغلى واجمل واحده<br>
+كل سنه وانتي طيبه ويارب تحققي كل اللي بتتمنيه وانا جنبك دايمًا<br>
+<br>
+
+            <span class="highlight">تعالي نشوف كام ميموري ليكي </span>
+        </p>
+        
+        <a href="journey.html" class="start-btn">
+            <span>✨ start journey ✨</span>
+        </a>
+    </div>
+
+    <script>
+        // النجوم
+        const starsContainer = document.getElementById('starsContainer');
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // الثلج
+        const snowContainer = document.getElementById('snowContainer');
+        const snowflakes = ['❄️', '❅', '❆'];
+        
+        for (let i = 0; i < 50; i++) {
+            const snow = document.createElement('div');
+            snow.className = 'snowflake';
+            snow.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            snow.style.animationDelay = Math.random() * 5 + 's';
+            snow.style.fontSize = (Math.random() * 1 + 0.8) + 'em';
+            snowContainer.appendChild(snow);
+        }
+
+        // النوتات والقلوب
+        const musicNotes = document.getElementById('musicNotes');
+        const notes = ['🎵', '💕', '💖', '💗', '💝', '🎄', '⭐'];
+        
+        function createNote() {
+            const note = document.createElement('div');
+            note.className = 'note';
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.left = Math.random() * 100 + '%';
+            note.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            note.style.animationDelay = Math.random() * 3 + 's';
+            note.style.color = `hsl(${Math.random() * 30}, 80%, 50%)`;
+            musicNotes.appendChild(note);
+            
+            setTimeout(() => {
+                note.remove();
+            }, 12000);
+        }
+
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => createNote(), i * 1000);
+        }
+        
+        setInterval(() => {
+            createNote();
+        }, 2000);
+    </script>
+</body>
+</html>
